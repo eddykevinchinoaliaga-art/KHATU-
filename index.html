@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>TRUEQUE ONLINE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+< 1 >
+<div id="startScreen" class="start-screen">
+  <h1>KHATU</h1>
+  <div class="start-actions">
+    <button id="startRegister" class="btn-start">Registrarse</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="appHeader" style="display:none;">
+  <div class="header-left">
+    <div id="usuarioHeader" style="display:none;">
+      <img id="fotoPerfilHeader" src="" alt="Foto de perfil">
+      <span id="nombreHeader"></span>
+      <button id="btnCerrarSesion">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <!-- Contenedor central para el título con fondo de león -->
+  <div class="header-center">
+    <h1 id="tituloPrincipal">TIENDA DE KHATU</h1>
+  </div>
+
+  <div class="menu-buttons">
+    <button id="btnPublicar">Publicar</button>
+    <button id="btnReporte">Reporte</button>
+  </div>
+</header>
+
+
+<!-- MAIN -->
+<main id="mainApp" style="display:none;">
+  <section id="catalogo">
+    <h2>Catálogo de artículos</h2>
+
+    <!-- Carrusel -->
+    <div id="carruselContainer" class="carrusel">
+      <div id="listaArticulos" class="carrusel-track grid"></div>
+      <button id="prevArticulo" class="carrusel-btn left">◀</button>
+      <button id="nextArticulo" class="carrusel-btn right">▶</button>
+    </div>
+  </section>
+</main>
+
+<!-- ========== MODALES ========== -->
+
+<!-- Registro -->
+<div id="modalRegistro" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <span id="closeRegistro" class="close">&times;</span>
+    <h2>Registro de usuario</h2>
+    <form id="registroForm">
+      <label>Nombre de usuario:</label>
+      <input type="text" id="username" required>
+      <label>Teléfono:</label>
+      <input type="text" id="telefono" required>
+      <label>Contraseña:</label>
+      <input type="password" id="password" required>
+      <label>Carnet:</label>
+      <input type="text" id="carnet">
+      <label>Foto de perfil:</label>
+      <input type="file" id="fotoPerfil" accept="image/*">
+      <p id="registroMensaje" style="margin-top:8px;color:#c0392b;"></p>
+      <button type="submit">Registrarse</button>
+    </form>
+  </div>
+</div>
+
+<!-- Publicar -->
+<div id="modalPublicar" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <span id="closePublicar" class="close">&times;</span>
+    <h2>Publicar Artículo</h2>
+    <form id="articuloForm">
+      <label>Título:</label>
+      <input type="text" id="titulo" required>
+      <label>Descripción:</label>
+      <textarea id="descripcion" required></textarea>
+      <label>Teléfono (propietario):</label>
+      <input type="text" id="telefonoArticulo" required>
+      <label>Estado:</label>
+      <select id="estado" required>
+        <option value="">Selecciona estado</option>
+        <option value="Nuevo">Nuevo</option>
+        <option value="Como nuevo">Como nuevo</option>
+        <option value="Buen estado">Buen estado</option>
+        <option value="Aceptable">Aceptable</option>
+      </select>
+      <label>Categoría:</label>
+      <select id="catalogoCategoria" required>
+        <option value="">Selecciona categoría</option>
+        <option value="Vehículo">Vehículo</option>
+        <option value="Muebles">Muebles</option>
+        <option value="Ropa">Ropa</option>
+        <option value="Accesorios">Accesorios</option>
+        <option value="Otros">Otros</option>
+      </select>
+      <label>Fotos:</label>
+      <input type="file" id="foto" accept="image/*" multiple>
+      <div id="previewFotos" class="preview-fotos"></div>
+      <button type="submit">Publicar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Intercambio -->
+<div id="modalIntercambio" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <h2>Solicitud de Intercambio</h2>
+    <form id="intercambioForm">
+      <label>Tu nombre:</label>
+      <input type="text" id="nombre" required>
+      <label>Título del artículo:</label>
+      <input type="text" id="tituloArticuloIntercambio" readonly>
+      <input type="hidden" id="telefonoIntercambio">
+      <label>¿Qué cosa deseas cambiar?</label>
+      <input type="text" id="objetoIntercambio" required>
+      <label>Estado del producto que ofreces:</label>
+      <select id="estadoIntercambio" required>
+        <option value="">Selecciona estado</option>
+        <option value="Nuevo">Nuevo</option>
+        <option value="Como nuevo">Como nuevo</option>
+        <option value="Buen estado">Buen estado</option>
+        <option value="Aceptable">Aceptable</option>
+      </select>
+      <label>Mensaje adicional:</label>
+      <textarea id="mensaje" required></textarea>
+      <button type="submit">Enviar solicitud</button>
+    </form>
+  </div>
+</div>
+
+<!-- Reporte -->
+<div id="modalReporteCuenta" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <span id="closeReporteCuenta" class="close">&times;</span>
+    <h2>Reporte de cuenta</h2>
+    <form id="reporteCuentaForm">
+      <label>Motivo:</label>
+      <textarea id="motivoReporteCuenta" required></textarea>
+      <label>Teléfono denunciado:</label>
+      <input type="text" id="telefonoDenunciado" required>
+      <label>Reportar cuenta:</label>
+      <input type="checkbox" id="reportarCuenta">
+      <label>Fotos (opcional):</label>
+      <input type="file" id="fotoReporteCuenta" multiple accept="image/*">
+      <div id="previewReporteCuenta" class="preview-fotos"></div>
+      <button type="submit">Enviar reporte</button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
